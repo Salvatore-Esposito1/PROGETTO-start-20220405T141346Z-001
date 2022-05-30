@@ -5,7 +5,7 @@
     margin: 0;
     }
 body {
-    background-image: url('/PROGETTO-start/img/jungleimg3.png');
+    background-image: url(../img/jungleimg3.png);
     background-size: cover;
     }
 .container {
@@ -46,7 +46,7 @@ body {
 #griglia>div {
     /* dimensioni e margini */
     background-color: #6c5371dc;
-    background-image: url('/PROGETTO-start/img/FurTexture.jpg');
+    background-image: url(../img/FurTexture.jpg);
     background-size: cover;
     border: 0.5px solid black;
     border-radius: 10px;
