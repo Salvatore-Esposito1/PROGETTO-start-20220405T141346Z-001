@@ -1,0 +1,185 @@
+/* Risolto il bug del doppio click sulla carta quando è in modalità show,
+   con la proprietà pointer-events: none; (riga 44) */
+* {
+    font-family: 'Lexend', sans-serif;
+    margin: 0;
+    }
+body {
+    background-image: url('/PROGETTO-start/img/jungleimg3.png');
+    background-size: cover;
+    }
+.container {
+    width: 900px;
+    margin: auto;
+    background-color: rgb(110, 61, 23);
+    box-shadow:10px 10px 7px #000000b3; 
+    }
+.text-center {
+    text-align: center;
+    border-right: 8px solid #fdac17;
+    border-left: 8px solid #fdac17;
+    border-bottom: 8px solid #fdac17;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: white;
+    }
+.icon-grid {
+/* flex! */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 8px solid #fdac17;
+    border-right: 8px solid #fdac17;
+    border-left: 8px solid #fdac17;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    }
+.show {
+/* visibilità e opacità */
+    visibility: visible !important;
+    opacity: 100 !important;
+    pointer-events: none;
+    }
+#griglia>div {
+    /* dimensioni e margini */
+    background-color: #6c5371dc;
+    background-image: url('/PROGETTO-start/img/FurTexture.jpg');
+    background-size: cover;
+    border: 0.5px solid black;
+    border-radius: 10px;
+    margin: 15px 10px;
+    width: 110px;
+    height: 110px;
+    box-shadow:10px 10px 7px #000000b3;  
+    }
+
+#griglia>div:hover {
+    transform: scale(1.03);
+    transition: 200ms;
+    }
+.timer {
+    padding: 10px 0;
+    }
+.icon {
+    font-size: 80px;
+    text-align: center;
+    visibility: visible !important;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    }
+.disabled {
+    pointer-events: none;
+    cursor: wait;
+    }
+.show {
+    /* agganciare animation-name rotazione carta */
+    animation-name: rotazioneCarta;
+    animation-duration: .4s;
+    background-color: white;
+    border: 1px solid crimson;
+    border-radius: 10px;
+}
+.find {
+    /* agganciare animation-name indovinato */
+    animation-name: indovinato;
+    animation-duration: .4s;
+    background-color: crimson;
+    border: 1px solid black;
+    border-radius: 10px;
+    }
+.button {
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #ffae18;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow:10px 10px 7px #000000b3;
+    }
+.button:hover {
+    background-color: #16486c;
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: 220ms;
+   
+    }
+#modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    }
+#modal.active {
+    display: flex;
+    }
+#modal h2 {
+    margin-top: 20px;
+    }
+
+@media (max-width: 600px) {
+    .container {
+        width: 400px;
+    }
+    #griglia>div {
+        margin: 5px 5px;
+        width: 70px;
+        height: 70px;
+    }
+    .icon {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 420px) {
+    .container {
+        width: 230px;
+    }
+    #griglia>div {
+        margin: 5px 5px;
+        width: 40px;
+        height: 40px;
+    }
+    .icon {
+        font-size: 20px;
+    }
+}
+
+@keyframes indovinato { /* animazione quando si indovina */
+    from { 
+        transform: rotate(0deg);
+        
+        } 
+        to { 
+        transform: rotate(360deg);
+           
+        }
+}
+
+@keyframes rotazioneCarta { /* animazione quando ruota la carta */
+    from {
+        transform: perspective(300px) rotate3d(0, 1, 0, 90deg);
+        animation-timing-function: ease-in;
+         }
+      
+         50% {
+        transform: perspective(300px) rotate3d(0, 1, 0, -5deg);
+        animation-timing-function: ease-in;
+         }
+      
+         to {
+        transform: perspective(300px);
+        animation-timing-function: ease-in;
+         }
+}
